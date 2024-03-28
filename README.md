@@ -16,6 +16,8 @@
 - To remove tight coupling of classes
 - Separate each class responsibility 
 - To define class relationship between other classes.
+- Production ready code.
+- Maintanable and Scalable Code.
 
 # Single Responsibility
 - A class should only have 1 reason to change.
@@ -32,3 +34,59 @@
 - Reusable code
 
 
+# Open/ Closed Principle
+- A class should be open for extension and closed for modification.
+###### For Example: You have a class Animal and this class has a subclass named Mammal and now you want to add a subclass to Animal named Reptile you literally should create a Reptile class and extend it to Animal class and everything should be fine. That means that you should model your classes properly in order to achieve this. In this example Animal class is open to extension that Reptile extended to Animal class and closed for modification is that we dont change or minimally changed any code in Animal class just to accomosate the Reptile class
+
+# Liskov Subtitution Principle
+- A class should not be force to implement that he can't or able to do.
+###### For example: You have Animal interface that has two method eat() and fly() and now you created Bird class that implements Animal interface now thay we can read it that "Bird is a Animal" right?. Now we create Mammal class and implements Animal interface we are now enforce to override the eat() and fly() method But does Mammal can fly? remember we should not force the class to implement the method that he cant do right? The correct approach is that we should create Animal interface has create another interface named FlyingAnimal that extends Animal and have a Bird that implements FlyingAnimal that has fly() method in this approach when we create Mammal class we are not enforce to implement the fly method because fly method is now only in FlyingAnimal interface.
+
+#### Wrong Approach
+```
+interface Animal {
+  void eat();
+  void fly()
+}
+
+class Bird implements Animal {
+  @Override
+  public void eat() {}
+
+  @Override
+  public void fly() {}
+}
+
+class Mammal implements Animal {
+  @Override
+  public void eat() {}
+
+  @Override
+  public void fly() {}
+}
+```
+
+#### Correct Approach
+```
+interface Animal {
+  void eat();
+}
+
+interface FlyingAnimal {
+  void fly();
+}
+
+class Bird implements FlyingAnimal {
+  @Override
+  public void eat() {}
+
+  @Override
+  public void fly() {}
+}
+
+class Mammal implements Animal {
+  @Override
+  public void eat() {}
+}
+
+```
