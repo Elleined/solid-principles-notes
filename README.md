@@ -90,3 +90,17 @@ class Mammal implements Animal {
 }
 
 ```
+
+## Behavioral
+- Operates in value level
+- Preconditions must be same or weaker than supertype. Same concept as contravariance but in value level because it need to be liberal of what you accept.
+
+- Postcondition must be same stronger than supertype. Same concept as covariant but in value level because you must be conservative of what you do.
+
+## Type
+- Operates in type level
+- Contravariance in parameters
+- Covariant in returns
+- No new exception and only a subtype of exception in superclass method are allowed in subtypes to be thrown
+
+[Understand Java Variance](https://github.com/Elleined/java-core-notes/blob/main/README.md#variance)
